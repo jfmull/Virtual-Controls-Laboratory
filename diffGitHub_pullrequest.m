@@ -5,7 +5,7 @@ function diffGitHub_pullrequest(branchname)
     % List modified models since branch diverged from main
     % Use *** to search recursively for modified SLX files starting in the current folder
     % git diff --name-only main..branchtomerge
-    gitCommand = sprintf('git --no-pager diff --name-only origin/release  origin/%s -- . ":(exclude)*.xml" ":(exclude)*.prj"', branchname);
+    gitCommand = sprintf('git --no-pager diff --name-only origin/release  origin/%s -- . ":(exclude)*.mlx" ":(exclude)*.xml" ":(exclude)*.prj"', branchname);
     [status,modifiedFiles] = system(gitCommand);
     if status ~= 0
         warning("git diff failed")
@@ -48,7 +48,7 @@ function report = diffToAncestor(tempdir,fileName)
     % Compare models and publish results in a printable report
     % Specify the format using 'pdf', 'html', or 'docx'
     comp= visdiff(ancestor, fileName);
-    filter(comp, 'unfiltered');
+    % filter(comp, 'unfiltered');
     report = publish(comp,'docx');
     
 end
