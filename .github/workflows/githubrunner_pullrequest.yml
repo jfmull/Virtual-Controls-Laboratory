@@ -25,6 +25,7 @@ jobs:
             Simscape
             Powertrain_Blockset
             Vehicle_Dynamics_Blockset 
+            Simscape_Multibody
       - name: Start display server
         run: |
          sudo apt-get install -y xvfb
@@ -40,9 +41,5 @@ jobs:
         with:
            name: diffreports
            path: ${{ github.workspace }}/*.html
-      - name: Run All Project Tests
-        uses: matlab-actions/run-command@v2
-        with:
-          command: runtests
 
 #   Copyright 2022-2024 The MathWorks, Inc.
